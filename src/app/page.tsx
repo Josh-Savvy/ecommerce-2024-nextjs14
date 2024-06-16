@@ -2,6 +2,7 @@
 
 import MaxWidthContainer from "@/components/layout/_components/max-width-container";
 import HomepageBanner from "@/components/organisms/home/banner";
+import AppFeatures from "@/components/organisms/home/features";
 import ShopbyCategories from "@/components/organisms/home/shop-by-categories";
 import TrendingProducts from "@/components/organisms/home/trending-products";
 
@@ -16,6 +17,9 @@ export default function Home() {
 			</div>
 			<div className="my-5 pt-6">
 				<ShopbyCategories />
+			</div>
+			<div className="my-5 pt-6 w-full">
+				<AppFeatures />
 			</div>
 		</MaxWidthContainer>
 	);

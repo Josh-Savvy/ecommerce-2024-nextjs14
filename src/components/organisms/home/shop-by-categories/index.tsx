@@ -22,11 +22,13 @@ const ShopbyCategories = () => {
 		<div>
 			<SectionTitle title="Shop by category" />
 			<div className="grid grid-cols-12 gap-3 pt-5">
-				<div className="h-full w-full col-span-5 relative overflow-hidden bg-gray-300 rounded group">
+				<div className="hidden lg:inline-flex h-full w-full col-span-5 relative overflow-hidden bg-gray-300 rounded group">
 					{data.data.slice(0, 1).map((cat, index) => (
 						<>
-							<div className="text-white absolute top-0 left-0 h-full w-full group-hover:opacity-100 opacity-0 duration-300 bg-gradient-to-t from-black/80 to-black/10 z-10 p-5 flex flex-col gap-1 items-end justify-end">
-								<h1 className="font-medium tracking-tight leading-none text-lg">{cat.title}</h1>
+							<div
+								key={index}
+								className="text-white absolute top-0 left-0 h-full w-full group-hover:opacity-100 opacity-0 duration-300 bg-gradient-to-t from-black/80 to-black/10 z-10 p-5 flex flex-col gap-1 items-start justify-start">
+								<h1 className="font-semibold tracking-tight leading-none">{cat.title}</h1>
 								<Link href={`#${cat.id}`} className="hover:underline">
 									<span>Explore</span>
 								</Link>
@@ -43,11 +45,11 @@ const ShopbyCategories = () => {
 						</>
 					))}
 				</div>
-				<div className="h-full w-full col-span-7 relative overflow-hidden grid grid-cols-2 gap-3">
+				<div className="h-full w-full col-span-12 lg:col-span-7 relative overflow-hidden grid sm:grid-cols-2 gap-3">
 					{data.data.slice(1, 4).map((cat, index) => (
 						<CategoryItem key={index} {...cat} />
 					))}
-					<div className="grid grid-cols-2 gap-3 w-full h-full">
+					<div className="grid md:grid-cols-2 gap-3 w-full h-full">
 						{data.data.slice(4, 6).map((cat, index) => (
 							<CategoryItem key={index} {...cat} />
 						))}
@@ -61,8 +63,8 @@ const ShopbyCategories = () => {
 const CategoryItem = (cat: Category) => {
 	return (
 		<div className="h-[220px] w-full rounded relative overflow-hidden bg-gray-300 group">
-			<div className="text-white absolute top-0 left-0 h-full w-full group-hover:opacity-100 opacity-0 duration-300 bg-gradient-to-t from-black/80 to-black/10 z-10 p-5 flex flex-col gap-1 items-end justify-end">
-				<h1 className="font-medium tracking-tight leading-none text-lg">{cat.title}</h1>
+			<div className="text-white absolute top-0 left-0 h-full w-full group-hover:opacity-100 opacity-0 duration-300 bg-gradient-to-t from-black/80 to-black/10 z-10 p-5 flex flex-col gap-1 items-start justify-start">
+				<h1 className="font-semibold tracking-tight leading-none">{cat.title}</h1>
 				<Link href={`#${cat.id}`} className="hover:underline">
 					<span>Explore</span>
 				</Link>
