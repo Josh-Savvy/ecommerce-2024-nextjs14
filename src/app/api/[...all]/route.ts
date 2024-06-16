@@ -25,7 +25,7 @@ async function handleRequest(req: Request) {
 	const url = new URL(req.url);
 	const { method } = req;
 	const query = Object.fromEntries(url.searchParams.entries());
-	const targetUrl = `//${process.env.API_BASE_URL!}${url.pathname.replace("/api", "")}`;
+	const targetUrl = `//${process.env.NEXT_PUBLIC_API_BASE_URL!}${url.pathname.replace("/api", "")}`;
 	try {
 		const body = req.body;
 		const { data } = await axios.get(targetUrl, {
@@ -38,7 +38,7 @@ async function handleRequest(req: Request) {
 	} catch (error: any) {
 		console.error({ error });
 		const status = error.response ? error.response.status : 500;
-		const data = error.response ? error.response.data : { message: "Internal Server Error" };
+		const data = error.response ? error.response.data : { message: "Internal Server Error", error };
 		return Response.json(data, { status });
 	}
 }
