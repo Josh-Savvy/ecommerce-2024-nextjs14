@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/layout/navbar";
+import ReactQueryProvider from "@/providers/react-query.provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,9 +17,13 @@ type Props = Readonly<{ children: React.ReactNode }>;
 export default function RootLayout({ children }: Props) {
 	return (
 		<html lang="en">
-			<Toaster />
-			<Navbar />
-			<body className={inter.className}>{children}</body>
+			<body className={inter.className}>
+				<ReactQueryProvider>
+					<Toaster />
+					<Navbar />
+					{children}
+				</ReactQueryProvider>
+			</body>
 			{/* // Todo: footer */}
 		</html>
 	);

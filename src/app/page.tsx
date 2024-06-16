@@ -7,7 +7,7 @@ import HomepageBanner from "@/components/organisms/home/banner";
 
 export default function Home() {
 	return (
-		<MaxWidthContainer>
+		<MaxWidthContainer className="min-h-[300vh] pt-10">
 			<HomepageBanner />
 		</MaxWidthContainer>
 	);
