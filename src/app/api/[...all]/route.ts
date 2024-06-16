@@ -1,59 +1,44 @@
-import axiosInstance from "@/services/api/axiosInstance";
 import axios from "axios";
+import { cookies } from "next/headers";
 
-export async function GET(req: any) {
+export const dynamic = "force-dynamic";
+
+export async function GET(req: Request) {
 	return handleRequest(req);
 }
 
-export async function POST(req: any) {
+export async function POST(req: Request) {
 	return handleRequest(req);
 }
 
-export async function PUT(req: any) {
+export async function PUT(req: Request) {
 	return handleRequest(req);
 }
 
-export async function DELETE(req: any) {
+export async function DELETE(req: Request) {
 	return handleRequest(req);
 }
 
-async function handleRequest(req: { url?: any; json?: any; method?: any }) {
-	const { method } = req;
+async function handleRequest(req: Request) {
+	const cookieStore = cookies();
+	const token = cookieStore.get("auth_token");
 	const url = new URL(req.url);
+	const { method } = req;
 	const query = Object.fromEntries(url.searchParams.entries());
-	const targetUrl = `${process.env.API_BASE_URL!}${url.pathname.replace("/api", "")}`;
+	const targetUrl = `//${process.env.API_BASE_URL!}${url.pathname.replace("/api", "")}`;
 	try {
-		let response;
-		const body = await req.json();
-
-		switch (method) {
-			case "GET":
-				response = await axios.get(targetUrl, { params: query });
-				break;
-			case "POST":
-				response = await axios.post(targetUrl, body);
-				break;
-			case "PUT":
-				response = await axios.put(targetUrl, body);
-				break;
-			case "DELETE":
-				response = await axios.delete(targetUrl, { data: body });
-				break;
-			default:
-				return new Response(`Method ${method} Not Allowed`, {
-					status: 405,
-					headers: { Allow: "GET, POST, PUT, DELETE" },
-				});
-		}
-
-		return new Response(JSON.stringify(response.data), {
-			status: response.status,
-			headers: { "Content-Type": "application/json" },
+		const body = req.body;
+		const { data } = await axios.get(targetUrl, {
+			params: query,
+			method,
+			headers: { Authorization: `Bearer ${token}` },
+			data: { ...body },
 		});
+		return Response.json(data, { status: 200 });
 	} catch (error: any) {
-		console.log({ error });
+		console.error({ error });
 		const status = error.response ? error.response.status : 500;
 		const data = error.response ? error.response.data : { message: "Internal Server Error" };
-		return new Response(JSON.stringify(data), { status, headers: { "Content-Type": "application/json" } });
+		return Response.json(data, { status });
 	}
 }

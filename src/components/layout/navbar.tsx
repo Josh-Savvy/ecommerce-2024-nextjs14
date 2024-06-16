@@ -8,7 +8,7 @@ import { Heart, ShoppingCart } from "lucide-react";
 const Navbar = () => {
 	return (
 		<>
-			<div className="sm:px-12 p-6 py-5 fixed bg-white flex justify-between gap-10 top-0 left-0 min-h-10 w-full z-40 shadow">
+			<div className="sm:px-12 p-6 py-5 fixed bg-white flex justify-between gap-10 top-0 left-0 min-h-10 w-full !z-40 shadow">
 				<div className="flex items-center gap-12">
 					<Link href="/">
 						<Logo />
