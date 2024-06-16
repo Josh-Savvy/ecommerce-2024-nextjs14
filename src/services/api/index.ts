@@ -10,6 +10,16 @@ const getProducts = async (limit = 10, skip = 0) => {
 	}
 };
 
-const API = { getProducts };
+const fetchCategories = async (limit = 10, skip = 0) => {
+	try {
+		const { data } = await axios.get("/api/categories");
+		return data;
+	} catch (error) {
+		console.log({ error });
+		throw error;
+	}
+};
+
+const API = { getProducts, fetchCategories };
 
 export default API;

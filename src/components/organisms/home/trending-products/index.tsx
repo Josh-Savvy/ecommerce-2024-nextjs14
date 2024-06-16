@@ -6,6 +6,7 @@ import type { GetProductsResponse } from "@/interfaces/api-response.interface";
 import API from "@/services/api";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import SectionTitle from "../_components";
 
 const TrendingProducts = () => {
 	const { data, isLoading, error } = useQuery<any, any, GetProductsResponse>({
@@ -17,7 +18,7 @@ const TrendingProducts = () => {
 
 	return (
 		<>
-			<h1 className="px-3 text-xl lg:text-2xl font-bold">Trending Products</h1>
+			<SectionTitle title="Trending Products" />
 			<div className="flex sm:grid sm:overflow-hidden overflow-x-scroll hide-scroll-bar">
 				<div className="flex flex-nowrap gap-3 gap-y-6 pb-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 sm:grid px-3 sm:px-0">
 					{isLoading ? (
