@@ -25,7 +25,7 @@ async function handleRequest(req: Request) {
 	const url = new URL(req.url);
 	const { method } = req;
 	const query = Object.fromEntries(url.searchParams.entries());
-	const targetUrl = `//${process.env.NEXT_PUBLIC_API_BASE_URL!}${url.pathname.replace("/api", "")}`;
+	const targetUrl = `https://${process.env.NEXT_PUBLIC_API_BASE_URL!}${url.pathname.replace("/api", "")}`;
 	try {
 		const body = req.body;
 		const { data } = await axios.get(targetUrl, {
