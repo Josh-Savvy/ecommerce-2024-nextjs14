@@ -28,7 +28,7 @@ async function handleRequest(req: Request) {
 	const targetUrl = `https://${process.env.NEXT_PUBLIC_API_BASE_URL!}${url.pathname.replace("/api", "")}`;
 	try {
 		const body = req.body;
-		const { data } = await axios.get(targetUrl, {
+		const { data } = await axios(targetUrl, {
 			params: query,
 			method,
 			headers: { Authorization: `Bearer ${token}` },
