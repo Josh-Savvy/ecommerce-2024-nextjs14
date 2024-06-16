@@ -22,7 +22,7 @@ const ShopbyCategories = () => {
 		<div>
 			<SectionTitle title="Shop by category" />
 			<div className="grid grid-cols-12 gap-3 pt-5">
-				<div className="h-full w-full col-span-5 relative overflow-hidden bg-gray-300 rounded group">
+				<div className="h-full w-full col-span-4 relative overflow-hidden bg-gray-300 rounded group">
 					<div className="text-white absolute top-0 left-0 h-full w-full group-hover:opacity-100 opacity-0 duration-300 bg-gradient-to-t from-black/80 to-black/10 z-10 p-5 flex flex-col gap-1 items-end justify-end">
 						<h1 className="font-medium tracking-tight leading-none text-lg">{data.data[0].title}</h1>
 						<Link href={`#${data.data[0].id}`} className="hover:underline">
