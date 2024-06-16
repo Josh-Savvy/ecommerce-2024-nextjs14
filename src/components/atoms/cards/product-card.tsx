@@ -1,10 +1,9 @@
 import type Product from "@/interfaces/product.interface";
 import type { Rating } from "@/interfaces/product.interface";
 import { cn, shimmer, toBase64 } from "@/lib/utils";
+import { Star } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-
-type Props = {};
 
 const ProductCard = ({ images, ...product }: Product) => {
 	const totalRating = calculateAverageRating(product.rating);
@@ -23,6 +22,24 @@ const ProductCard = ({ images, ...product }: Product) => {
 			</div>
 			<div className="space-y-2">
 				<h1 className="font-semibold">{product.title}</h1>
+				<div className="flex items-center gap-3">
+					<p className="font-medium text-sm">{product.category.title}</p>
+					<span className="text-sm text-black/50 font-medium flex items-center">
+						{totalRating.toFixed(1)}
+						<Star size={15} fill="#0000005A" strokeOpacity={0.5} />
+					</span>
+				</div>
+				<div className="flex items-center gap-3">
+					{product.discoutedPrice ? (
+						<p className="font-semibold text-lg">${product.discoutedPrice}</p>
+					) : (
+						<p className="font-semibold text-lg">${product.price}</p>
+					)}
+					{product.discoutedPrice && <p className="text-sm text-black/50">{product.price}</p>}
+					{product.percentageOff && product.percentageOff > 0 && (
+						<p className="text-sm text-black/50">({product.percentageOff}% off)</p>
+					)}
+				</div>
 			</div>
 		</div>
 	);

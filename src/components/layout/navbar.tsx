@@ -35,6 +35,8 @@ const Navbar = () => {
 				</div>
 			</div>
 			<br />
+			<br />
+			<br />
 			<AnnouncementBanner />
 		</>
 	);

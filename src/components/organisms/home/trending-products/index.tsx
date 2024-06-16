@@ -12,16 +12,16 @@ const TrendingProducts = () => {
 		queryKey: ["trending-products"],
 		queryFn: async () => await API.getProducts(),
 		refetchOnReconnect: true,
-		refetchOnWindowFocus: true,
+		// refetchOnWindowFocus: true,
 	});
 
 	return (
 		<>
-			<h1 className="px-3 text-xl lg:text-2xl font-bold">Trending</h1>
+			<h1 className="px-3 text-xl lg:text-2xl font-bold">Trending Products</h1>
 			<div className="flex sm:grid sm:overflow-hidden overflow-x-scroll hide-scroll-bar">
 				<div className="flex flex-nowrap gap-3 gap-y-6 pb-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 sm:grid px-3 sm:px-0">
 					{isLoading ? (
-						Array.from({ length: 6 }).map((_, index) => <ProductSkeleton key={index} />)
+						Array.from({ length: 8 }).map((_, index) => <ProductSkeleton key={index} />)
 					) : error ? (
 						<div className="text-lg font-semibold text-red-500 text-center">Something went wrong </div> // Todo
 					) : (

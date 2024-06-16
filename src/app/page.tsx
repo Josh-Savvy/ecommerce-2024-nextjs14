@@ -8,9 +8,9 @@ import TrendingProducts from "@/components/organisms/home/trending-products";
 
 export default function Home() {
 	return (
-		<MaxWidthContainer className="min-h-[300vh] pt-10">
+		<MaxWidthContainer className="min-h-[300vh] pt-12">
 			<HomepageBanner />
-			<div className="my-5">
+			<div className="my-5 pt-6">
 				<TrendingProducts />
 			</div>
 		</MaxWidthContainer>

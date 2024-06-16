@@ -12,6 +12,7 @@ export interface ProductImage {
 export interface Category {
 	id: string;
 	title: string;
+	imageUrl: string;
 	description?: string;
 	createdAt: Date;
 	updatedAt: Date;
