@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import jsCookie from "js-cookie";
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));

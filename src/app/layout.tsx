@@ -3,6 +3,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/layout/navbar";
 import ReactQueryProvider from "@/providers/react-query.provider";
+import AuthProvider from "@/contexts/auth.context";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -16,9 +17,11 @@ export default function RootLayout({ children }: Props) {
 		<html lang="en">
 			<body>
 				<ReactQueryProvider>
-					<Toaster />
-					<Navbar />
-					{children}
+					<AuthProvider>
+						<Toaster />
+						<Navbar />
+						{children}
+					</AuthProvider>
 				</ReactQueryProvider>
 			</body>
 			{/* // Todo: footer */}
