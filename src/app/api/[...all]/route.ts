@@ -1,4 +1,5 @@
 import axiosInstance from "@/services/api/axiosInstance";
+import axios from "axios";
 
 export async function GET(req: any) {
 	return handleRequest(req);
@@ -27,16 +28,16 @@ async function handleRequest(req: { url?: any; json?: any; method?: any }) {
 
 		switch (method) {
 			case "GET":
-				response = await axiosInstance.get(targetUrl, { params: query });
+				response = await axios.get(targetUrl, { params: query });
 				break;
 			case "POST":
-				response = await axiosInstance.post(targetUrl, body);
+				response = await axios.post(targetUrl, body);
 				break;
 			case "PUT":
-				response = await axiosInstance.put(targetUrl, body);
+				response = await axios.put(targetUrl, body);
 				break;
 			case "DELETE":
-				response = await axiosInstance.delete(targetUrl, { data: body });
+				response = await axios.delete(targetUrl, { data: body });
 				break;
 			default:
 				return new Response(`Method ${method} Not Allowed`, {
@@ -50,6 +51,7 @@ async function handleRequest(req: { url?: any; json?: any; method?: any }) {
 			headers: { "Content-Type": "application/json" },
 		});
 	} catch (error: any) {
+		console.log({ error });
 		const status = error.response ? error.response.status : 500;
 		const data = error.response ? error.response.data : { message: "Internal Server Error" };
 		return new Response(JSON.stringify(data), { status, headers: { "Content-Type": "application/json" } });

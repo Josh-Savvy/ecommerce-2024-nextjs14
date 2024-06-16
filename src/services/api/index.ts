@@ -8,3 +8,7 @@ const getProducts = async (limit = 10, skip = 0) => {
 		console.log({ error });
 	}
 };
+
+const API = { getProducts };
+
+export default API;
