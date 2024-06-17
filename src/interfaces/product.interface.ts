@@ -1,3 +1,5 @@
+import { Seller } from "./user.interface";
+
 export interface Rating {
 	id: string;
 	value: number;
@@ -25,7 +27,12 @@ export default interface Product {
 	description: string;
 	images: ProductImage[];
 	price: number;
-	quantity: number;
+	initialQuantity: number;
+	quantityLeft: number;
+	availableSizes?: string[];
+	inStock: boolean;
+	views: number;
+	seller: Seller;
 	rating: Rating[];
 	percentageOff?: number;
 	discoutedPrice: number;

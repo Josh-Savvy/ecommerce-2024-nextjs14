@@ -11,7 +11,7 @@ const ProductImageGallery = (prod: Product) => {
 	const [loading, setLoading] = useState<boolean>(true);
 	return (
 		<div className="grid grid-cols-12 gap-3 w-full">
-			<div className="col-span-12 sm:col-span-2 grid sm:grid-cols-1 grid-cols-3 gap-2 sm:order-first order-last">
+			<div className="col-span-12 sm:col-span-2 grid sm:grid-cols-1 grid-cols-3 gap-2 sm:order-first order-last h-full">
 				{images.map((item, index) => {
 					return (
 						<div

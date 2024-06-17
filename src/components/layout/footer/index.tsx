@@ -8,7 +8,7 @@ const Footer = () => {
 	return (
 		<footer className="bg-[#00071B] min-h-[200px] w-full text-white py-6">
 			<div className="px-4 sm:px-0 relative flex justify-start">
-				<Link href="/" className="flex items-end gap-5 sm:px-12">
+				<Link href="/" className="flex items-end gap-3 sm:px-12">
 					<svg width="56" height="44" viewBox="0 0 76 64" fill="none">
 						<path
 							fillRule="evenodd"
@@ -17,7 +17,7 @@ const Footer = () => {
 							fill="white"
 						/>
 					</svg>
-					{/* <h1 className="font-bold font-serif text-xl sm:text-2xl md:text-3xl uppercase">Shop</h1> */}
+					<h1 className="font-bold font-serif text-xl uppercase">ShopCommerce</h1>
 				</Link>
 			</div>
 			<div className="sm:px-16 px-6 w-full flex flex-wrap gap-y-5 lg:grid-cols-4 gap-3 pt-5 items-start justify-between p-9 sm:p-6">

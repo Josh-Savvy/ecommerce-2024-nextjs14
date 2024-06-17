@@ -1,3 +1,5 @@
+import Product from "./product.interface";
+
 export enum UserRole {
 	User = "User",
 	Seller = "Seller",
@@ -18,4 +20,14 @@ export default interface User {
 	createdAt: Date;
 	updatedAt: Date;
 	// orders: Order[];
+}
+
+export interface UserWithSellerProfile extends User {
+	sellerProfile: Seller;
+}
+
+export interface Seller {
+	userId: string;
+	user: UserWithSellerProfile;
+	products: Product[];
 }
