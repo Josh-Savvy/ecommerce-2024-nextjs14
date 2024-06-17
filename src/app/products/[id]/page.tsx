@@ -1,5 +1,6 @@
 import ItemNotFound from "@/components/atoms/common/item-not-found";
 import ProductImageGallery from "@/components/organisms/products/view-product/product-image-gallery";
+import ProductSideDetails from "@/components/organisms/products/view-product/product-side-details";
 import RelatedProducts from "@/components/organisms/products/view-product/related-products";
 import type Product from "@/interfaces/product.interface";
 import React from "react";
@@ -21,8 +22,11 @@ export default async function ViewProductPage({ params: { id } }: Props) {
 	) : (
 		<div className="min-h-[100vh] pt-10">
 			<div className="grid grid-cols-12 sm:px-12 px-6 gap-3">
-				<div className="col-span-8">
+				<div className="xl:col-span-8 col-span-12">
 					<ProductImageGallery {...data} />
+				</div>
+				<div className="xl:col-span-4 col-span-12">
+					<ProductSideDetails />
 				</div>
 			</div>
 			<div className=""></div>

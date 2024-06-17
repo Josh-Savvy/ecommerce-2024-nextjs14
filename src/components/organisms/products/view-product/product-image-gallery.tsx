@@ -11,13 +11,13 @@ const ProductImageGallery = (prod: Product) => {
 	const [loading, setLoading] = useState<boolean>(true);
 	return (
 		<div className="grid grid-cols-12 gap-3 w-full">
-			<div className="xl:col-span-3 lg:col-span-4 grid gap-2">
+			<div className="col-span-12 sm:col-span-2 grid sm:grid-cols-1 grid-cols-3 gap-2 sm:order-first order-last">
 				{images.map((item, index) => {
 					return (
 						<div
 							className={cn(
 								item.id === focusedImage.id && "border-[#00398F] border-2",
-								"relative w-full h-[150px] overflow-hidden rounded-lg shadow cursor-pointer",
+								"relative w-full h-[100px] sm:h-[150px] overflow-hidden rounded-lg shadow cursor-pointer",
 							)}
 							onClick={() => setFocusedImage(item)}
 							key={index}>
@@ -34,8 +34,8 @@ const ProductImageGallery = (prod: Product) => {
 					);
 				})}
 			</div>
-			<div className="xl:col-span-9 lg:col-span-8">
-				<div className="relative w-full h-[510px] overflow-hidden rounded-lg shadow duration-700">
+			<div className="col-span-12 sm:col-span-10">
+				<div className="relative w-full h-[400px] sm:h-[510px] overflow-hidden rounded-lg shadow duration-700">
 					<Image
 						src={focusedImage.url}
 						fill

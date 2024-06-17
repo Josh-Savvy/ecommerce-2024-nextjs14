@@ -14,7 +14,7 @@ export default async function FooterCategoriesSection() {
 				<h1 className="font-serif font-semibold text-lg mb-2">Categories</h1>
 				{data.map((item, index) => (
 					<li className="text-sm tracking-tight" key={index}>
-						<Link prefetch={false} key={index} href={`/products/${item.id}`}>
+						<Link prefetch={false} key={index} href={`/categories/${item.id}`}>
 							{item.title}
 						</Link>
 					</li>
