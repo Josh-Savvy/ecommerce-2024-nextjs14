@@ -5,3 +5,7 @@ export interface GetProductsResponse {
 	count: number;
 	data: Product[];
 }
+
+export interface ApiErrorInterface {
+	error: { message: string; errorCode: string; status: number };
+}

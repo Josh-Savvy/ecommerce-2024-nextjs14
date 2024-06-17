@@ -1,5 +1,5 @@
 import React from "react";
-import AnnouncementBanner from "../atoms/announcement-banner";
+import AnnouncementBanner from "../atoms/common/announcement-banner";
 import Link from "next/link";
 import SearchBar from "./_components/search-bar";
 import AuthCta from "./_components/auth-cta";
