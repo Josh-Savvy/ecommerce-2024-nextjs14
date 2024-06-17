@@ -8,12 +8,11 @@ import Image from "next/image";
 import { shimmer, toBase64 } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import useCategories from "@/hooks/useCategories";
+import { ArrowRight } from "lucide-react";
 
 const ShopbyCategories = () => {
-	const { data, isLoading, error } = useQuery<any, any, { data: Category[] }, any>({
-		queryKey: ["shop-by-categories"],
-		queryFn: async () => await API.fetchCategories(),
-	});
+	const { data, isLoading, error } = useCategories();
 	return isLoading ? (
 		<>Loading...</>
 	) : error || !data ? (
@@ -27,10 +26,10 @@ const ShopbyCategories = () => {
 						<>
 							<div
 								key={index}
-								className="text-white absolute top-0 left-0 h-full w-full group-hover:opacity-100 opacity-0 duration-300 bg-gradient-to-t from-black/80 to-black/10 z-10 p-5 flex flex-col gap-1 items-start justify-start">
+								className="text-white absolute top-0 left-0 h-full w-full group-hover:opacity-100 opacity-100 sm:opacity-0 duration-300 bg-gradient-to-t from-black/80 to-black/10 z-10 p-5 flex flex-col gap-1 items-start justify-start">
 								<h1 className="font-semibold tracking-tight leading-none">{cat.title}</h1>
-								<Link href={`#${cat.id}`} className="hover:underline">
-									<span>Explore</span>
+								<Link href={`#${cat.id}`} className="underline flex items-center gap-1">
+									<span>Explore</span> <ArrowRight size={18} />
 								</Link>
 							</div>
 							<Image
@@ -63,10 +62,10 @@ const ShopbyCategories = () => {
 const CategoryItem = (cat: Category) => {
 	return (
 		<div className="h-[220px] w-full rounded relative overflow-hidden bg-gray-300 group">
-			<div className="text-white absolute top-0 left-0 h-full w-full group-hover:opacity-100 opacity-0 duration-300 bg-gradient-to-t from-black/80 to-black/10 z-10 p-5 flex flex-col gap-1 items-start justify-start">
+			<div className="text-white absolute top-0 left-0 h-full w-full group-hover:opacity-100 opacity-100 sm:opacity-0 duration-300 bg-gradient-to-t from-black/80 to-black/10 z-10 p-5 flex flex-col gap-1 items-start justify-start">
 				<h1 className="font-semibold tracking-tight leading-none">{cat.title}</h1>
-				<Link href={`#${cat.id}`} className="hover:underline">
-					<span>Explore</span>
+				<Link href={`#${cat.id}`} className="underline flex items-center gap-1">
+					<span>Explore</span> <ArrowRight size={18} />
 				</Link>
 			</div>
 			<Image

@@ -7,14 +7,10 @@ import API from "@/services/api";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import SectionTitle from "../_components";
+import useProducts from "@/hooks/useProducts";
 
 const TrendingProducts = () => {
-	const { data, isLoading, error } = useQuery<any, any, GetProductsResponse>({
-		queryKey: ["trending-products"],
-		queryFn: async () => await API.getProducts(),
-		refetchOnReconnect: true,
-		// refetchOnWindowFocus: true,
-	});
+	const { data, isLoading, error } = useProducts();
 
 	return (
 		<>

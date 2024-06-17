@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/layout/navbar";
 import ReactQueryProvider from "@/providers/react-query.provider";
 import AuthProvider from "@/contexts/auth.context";
+import Footer from "@/components/layout/footer";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -22,9 +23,9 @@ export default function RootLayout({ children }: Props) {
 						<Navbar />
 						{children}
 					</AuthProvider>
+					<Footer />
 				</ReactQueryProvider>
 			</body>
-			{/* // Todo: footer */}
 		</html>
 	);
 }

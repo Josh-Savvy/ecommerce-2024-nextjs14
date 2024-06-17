@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const CategoriesPage = () => {
-  return (
-    <div>CategoriesPage</div>
-  )
-}
+const AllCategoriesPage = () => {
+	return <div>AllCategoriesPage</div>;
+};
 
-export default CategoriesPage
+export default AllCategoriesPage;

@@ -3,9 +3,24 @@ import AnnouncementBanner from "../atoms/announcement-banner";
 import Link from "next/link";
 import SearchBar from "./_components/search-bar";
 import AuthCta from "./_components/auth-cta";
-import { Heart, ShoppingCart } from "lucide-react";
+import { ChevronDown, Heart, ShoppingCart } from "lucide-react";
+import type { Category } from "@/interfaces/product.interface";
+import {
+	DropdownMenu,
+	DropdownMenuTrigger,
+	DropdownMenuPortal,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuItem,
+} from "../ui/dropdown-menu";
+import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
 
-const Navbar = () => {
+export default async function Navbar() {
+	const { data } = (await fetch(`${process.env.API_BASE_URL}/categories?limit=6`).then((res) => res.json())) as {
+		data: Category[];
+	};
+
 	return (
 		<>
 			<div className="sm:px-12 p-6 py-5 fixed bg-white flex justify-between gap-10 top-0 left-0 min-h-10 w-full !z-40 shadow">
@@ -13,16 +28,39 @@ const Navbar = () => {
 					<Link href="/">
 						<Logo />
 					</Link>
-					<div className="flex items-center gap-6">
-						{navlinks.map(({ label, link }, index) => (
-							<Link key={index} href={link} className="font-medium">
-								<span className="text-sm">{label}</span>
-							</Link>
-						))}
+					<div className="max-w-md hidden sm:flex">
+						<DropdownMenu>
+							<DropdownMenuTrigger asChild>
+								<span className="flex items-center gap-1 text-sm tracking-tight cursor-pointer">
+									Browse Categories <ChevronDown size={15} />
+								</span>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent className="w-[300px] !justify-end">
+								<DropdownMenuGroup>
+									{data.map((item, index) => (
+										<Link
+											prefetch={false}
+											key={index}
+											href={`/categories/${item.id}`}
+											className="font-medium">
+											<DropdownMenuItem
+												asChild
+												inset
+												className={cn(
+													index > 0 && "border-t rounded-none",
+													"py-3 !cursor-pointer",
+												)}>
+												<span className="text-[15px] font-[500]">{item.title}</span>
+											</DropdownMenuItem>
+										</Link>
+									))}
+								</DropdownMenuGroup>
+							</DropdownMenuContent>
+						</DropdownMenu>
 					</div>
 				</div>
 				<div className="flex items-center gap-4 flex-grow justify-end">
-					<div className="w-full max-w-sm">
+					<div className="w-full max-w-sm md:inline-flex hidden">
 						<SearchBar />
 					</div>
 					<Link href="/favourites">
@@ -40,9 +78,7 @@ const Navbar = () => {
 			<AnnouncementBanner />
 		</>
 	);
-};
-
-export default Navbar;
+}
 
 export const Logo = () => {
 	return (
